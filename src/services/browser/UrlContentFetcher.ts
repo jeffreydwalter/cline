@@ -46,7 +46,9 @@ export class UrlContentFetcher {
 		}
 		const stats = await this.ensureChromiumExists()
 		this.browser = await stats.puppeteer.launch({
+			ignoreHTTPSErrors: true,
 			args: [
+				"--ignore-certificate-errors",
 				"--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
 			],
 			executablePath: stats.executablePath,
